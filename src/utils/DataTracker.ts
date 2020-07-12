@@ -42,6 +42,10 @@ class DataTracker {
     }
   }
 
+  isEmpty(): boolean {
+    return this.valuesCount === 0;
+  }
+
   showMin(): number | null {
     return this.minValue;
   }

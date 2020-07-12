@@ -113,4 +113,21 @@ describe("DataTracker class", () => {
       expect(result).toBe(-2);
     });
   });
+
+  describe("isEmpty", () => {
+    test("return true when insert was never called", () => {
+      const tracker = new DataTracker();
+      const result = tracker.isEmpty();
+
+      expect(result).toBe(true);
+    });
+
+    test("return true when insert was ever called", () => {
+      const tracker = new DataTracker();
+      tracker.insert(5);
+      const result = tracker.isEmpty();
+
+      expect(result).toBe(false);
+    });
+  });
 });
