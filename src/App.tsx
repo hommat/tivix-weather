@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 
 import Form from "./components/Form";
+import Statistics from "./components/Statistics";
 import { WeatherGet, WeatherGetTrackers } from "./utils/Weather";
 
 function App() {
@@ -14,11 +15,12 @@ function App() {
 
   return (
     <Fragment>
+      <header>
+        <h1>Weather app</h1>
+      </header>
       <main>
-        <section>
-          <Form updateWeather={updateWeather} />
-        </section>
-        <section></section>
+        <Form updateWeather={updateWeather} />
+        {city && trackers && <Statistics city={city} trackers={trackers} />}
       </main>
     </Fragment>
   );

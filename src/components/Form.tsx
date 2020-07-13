@@ -1,4 +1,4 @@
-import React, { Fragment, useState, FormEvent } from "react";
+import React, { useState, FormEvent } from "react";
 
 import Weather, { WeatherGet } from "../utils/Weather";
 
@@ -45,7 +45,7 @@ function Form({ updateWeather }: FormProps) {
   }
 
   return (
-    <Fragment>
+    <section>
       <form onSubmit={handleSubmit} data-testid="form">
         <label htmlFor="city">City</label>
         <input
@@ -61,7 +61,7 @@ function Form({ updateWeather }: FormProps) {
         </button>
       </form>
       {state.err && <p>City not found</p>}
-    </Fragment>
+    </section>
   );
 }
 
