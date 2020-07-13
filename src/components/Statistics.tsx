@@ -1,6 +1,7 @@
 import React from "react";
 
 import StatisticsCard from "./StatisticsCard";
+import { SHeading, SCards } from "./Statistics.style";
 import { WeatherGetTrackers } from "../utils/Weather";
 
 interface StatisticsProps {
@@ -17,25 +18,36 @@ function Statistics({ city, trackers }: StatisticsProps) {
   } = trackers;
   return (
     <section>
-      <h2>{city}</h2>
-      {!morningTemperature.isEmpty() && (
-        <StatisticsCard
-          title="Morning temperature"
-          tracker={morningTemperature}
-        />
-      )}
+      <SHeading>{city}</SHeading>
+      <SCards>
+        {!morningTemperature.isEmpty() && (
+          <StatisticsCard
+            title="Morning temperature"
+            tracker={morningTemperature}
+            endsWith="C"
+          />
+        )}
 
-      {!dayTemperature.isEmpty() && (
-        <StatisticsCard title="Day temperature" tracker={dayTemperature} />
-      )}
+        {!dayTemperature.isEmpty() && (
+          <StatisticsCard
+            title="Day temperature"
+            tracker={dayTemperature}
+            endsWith="C"
+          />
+        )}
 
-      {!nightTemperature.isEmpty() && (
-        <StatisticsCard title="Night temperature" tracker={nightTemperature} />
-      )}
+        {!nightTemperature.isEmpty() && (
+          <StatisticsCard
+            title="Night temperature"
+            tracker={nightTemperature}
+            endsWith="C"
+          />
+        )}
 
-      {!humidity.isEmpty() && (
-        <StatisticsCard title="Humidity" tracker={humidity} />
-      )}
+        {!humidity.isEmpty() && (
+          <StatisticsCard title="Humidity" tracker={humidity} endsWith="%" />
+        )}
+      </SCards>
     </section>
   );
 }

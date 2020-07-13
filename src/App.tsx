@@ -2,7 +2,9 @@ import React, { Fragment, useState } from "react";
 
 import Form from "./components/Form";
 import Statistics from "./components/Statistics";
+import GlobalStyle from "./styles/GlobalStyle";
 import { WeatherGet, WeatherGetTrackers } from "./utils/Weather";
+import { SMain, SHeader } from "./App.style";
 
 function App() {
   const [city, setCity] = useState<string>("");
@@ -15,13 +17,14 @@ function App() {
 
   return (
     <Fragment>
-      <header>
-        <h1>Weather app</h1>
-      </header>
-      <main>
+      <GlobalStyle />
+      <SMain>
+        <SHeader>
+          <h1>Weather app</h1>
+        </SHeader>
         <Form updateWeather={updateWeather} />
         {city && trackers && <Statistics city={city} trackers={trackers} />}
-      </main>
+      </SMain>
     </Fragment>
   );
 }

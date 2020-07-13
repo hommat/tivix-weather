@@ -1,23 +1,37 @@
 import React from "react";
 
 import DataTracker from "../utils/DataTracker";
+import { SStatisticsCard, SHeading, SListItem } from "./StatisticsCard.style";
 
 interface StatisticsCardProps {
   title: string;
   tracker: DataTracker;
+  endsWith: string;
 }
 
-function StatisticsCard({ title, tracker }: StatisticsCardProps) {
+function StatisticsCard({ title, tracker, endsWith }: StatisticsCardProps) {
   return (
-    <div>
-      <h3>{title}</h3>
+    <SStatisticsCard>
+      <SHeading>{title}</SHeading>
       <ul>
-        <li>Min: {tracker.showMin()}</li>
-        <li>Max: {tracker.showMax()}</li>
-        <li>Mean: {Math.round(tracker.showMean()! * 100) / 100}</li>
-        <li>Mode: {tracker.showMode()}</li>
+        <SListItem>
+          Min: {tracker.showMin()}
+          {endsWith}
+        </SListItem>
+        <SListItem>
+          Max: {tracker.showMax()}
+          {endsWith}
+        </SListItem>
+        <SListItem>
+          Mean: {Math.round(tracker.showMean()! * 100) / 100}
+          {endsWith}
+        </SListItem>
+        <SListItem>
+          Mode: {tracker.showMode()}
+          {endsWith}
+        </SListItem>
       </ul>
-    </div>
+    </SStatisticsCard>
   );
 }
 
