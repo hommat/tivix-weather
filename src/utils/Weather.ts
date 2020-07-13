@@ -5,7 +5,7 @@ export interface WeatherGet {
   trackers: WeatherGetTrackers;
 }
 
-interface WeatherGetTrackers {
+export interface WeatherGetTrackers {
   dayTemperature: DataTracker;
   nightTemperature: DataTracker;
   morningTemperature: DataTracker;
@@ -36,14 +36,13 @@ class Weather {
       const trackers = this.convertWeatherListToTrackers(list);
       return { cityName: city.name, trackers };
     } catch (e) {
-      console.error(e);
       return null;
     }
   }
 
   private createEndpoint(city: string) {
     const appid = process.env.REACT_APP_API_KEY;
-    return `http://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=5&appid=${appid}`;
+    return `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&cnt=5&appid=${appid}`;
   }
 
   private convertWeatherListToTrackers(
